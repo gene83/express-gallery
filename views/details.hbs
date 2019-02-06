@@ -1,0 +1,28 @@
+{{#with singlePhoto}}
+<div class="detailedPhoto">
+  {{title}} -- {{author}} <br>
+  <img src="{{link}}" alt="A photograph of the sea"> <br>
+  {{description}}
+
+  <form action="/gallery/{{id}}/edit" method="GET" enctype="application/x-www-form-urlencoded">
+    <input type="submit" value="Edit Photo">
+  </form>
+
+  <form action="/gallery/{{id}}?_method=DELETE" method="POST" enctype="application/x-www-form-urlencoded">
+    <input type="submit" value="Delete Photo">
+  </form>
+</div>
+{{/with}}
+
+<div class="sidebar">
+  {{#each photoList}}
+  <div class="card">
+    <img src="{{link}}" alt="A photograph of the sea"> <br>
+    {{title}} -- <br>
+    {{author}}
+    <form action="/gallery/{{id}}" method="GET" enctype="application/x-www-form-urlencoded">
+      <input type="submit" value="view">
+    </form>
+  </div>
+  {{/each}}
+</div>

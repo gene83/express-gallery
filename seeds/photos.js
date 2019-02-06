@@ -6,45 +6,45 @@ exports.seed = function(knex, Promise) {
       // Inserts seed entries
       return knex('photos').insert([
         {
-          image:
+          link:
             'http://i.nextmedia.com.au/insidesport/2011-02-mondayitis_rhys_jeremy_660.jpg',
-          title: 'Catching Shade',
-          link: 'slavetothesea.com',
+          title: 'Title Place Holder',
+          author: 'Jeremy Wilmotte',
           description: ''
         },
         {
-          image:
-            'http://i.nextmedia.com.au/insidesport/2011-02-mondayitis_rhys_jeremy_660.jpg',
-          title: 'Tahitian cavern',
-          link: 'slavetothesea.com',
+          link:
+            'https://cdn3.theinertia.com/wp-content/gallery/adam-duffy-photography/tahiti-inside-out.jpg',
+          title: 'Title Place Holder',
+          author: 'Adam Duffy',
           description: ''
         },
         {
-          image:
-            'http://i.nextmedia.com.au/insidesport/2011-02-mondayitis_rhys_jeremy_660.jpg',
-          title: 'Sunset Creamsicle',
-          link: 'slavetothesea.com',
+          link:
+            'https://iso.500px.com/wp-content/uploads/2015/01/remagic_cover.jpeg',
+          title: 'Title Place Holder',
+          author: 'Marco Petracci',
           description: ''
         },
         {
-          image:
+          link:
             'https://prime-surfing.de/wp-content/uploads/2018/08/Steudtner-Nazare.jpg',
-          title: 'Nazare Nightmares',
-          link: 'slavetothesea.com',
+
+          title: 'Title Place Holder',
+          author: 'Sebastian Steudner',
           description: ''
         },
         {
-          image:
-            'http://i.nextmedia.com.au/insidesport/2011-02-mondayitis_rhys_jeremy_660.jpg',
-          title: 'Blue Dream',
-          link: 'slavetothesea.com',
+          link: 'https://i.ytimg.com/vi/DWO9OhDzYtU/maxresdefault.jpg',
+          title: 'Title Place Holder',
+          author: 'unknown',
           description: ''
         },
         {
-          image:
-            'http://i.nextmedia.com.au/insidesport/2011-02-mondayitis_rhys_jeremy_660.jpg',
-          title: 'Green peace',
-          link: 'slavetothesea.com',
+          link:
+            'https://images.unsplash.com/photo-1496457460058-372d00396733?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+          title: 'Title Place Holder',
+          author: 'unknown',
           description: ''
         }
       ]);

@@ -1,0 +1,16 @@
+<img src="https://cdn-az.allevents.in/banners/1a6c2206b0ec6292c37719b69f38fcd4-rimg-w1160-h533-gmir.jpg" alt="a wave at sunset"
+  id="banner">
+
+<div id="main">
+  {{#each photoList}}
+  <div class="card">
+    <img src="{{link}}" alt="A photograph of the sea"> <br>
+    {{title}} -- <br>
+    {{author}}
+    <form action="/gallery/{{id}}" method="GET" enctype="application/x-www-form-urlencoded">
+      <input type="submit" value="view">
+    </form>
+  </div>
+  {{/each}}
+</div>
+</div>

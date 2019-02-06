@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const PORT = process.env.PORT || 8080;
 const gallery = require('./routes/gallery');
+const listing = require('./routes/listing');
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.set('view engine', '.hbs');
 
 app.use(bodyParser.urlencoded());
 app.use(methodOverride('_method'));
+app.use('/', listing);
 app.use('/gallery', gallery);
 
 app.listen(PORT, () => {
