@@ -15,6 +15,7 @@ app.set('view engine', '.hbs');
 
 app.use(bodyParser.urlencoded());
 app.use(methodOverride('_method'));
+app.use(express.static('public'));
 app.use('/', listing);
 app.use('/gallery', gallery);
 
