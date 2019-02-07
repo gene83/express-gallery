@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<form action="/login" method="POST">
-  <label for="username">Username:</label><br />
-  <input type="text" name="username" />
-
-  <label for="password">Password:</label><br />
-  <input type="password" name="password" />
-
-  <button>Login</button>
-</form>
 
 <head>
   <meta charset="UTF-8">
@@ -19,9 +10,23 @@
   <link rel="stylesheet" href="/css/styles.css">
   <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Telex" rel="stylesheet">
 </head>
-{{> header}}
+<form action="/login" method="POST" id="header-login">
+  <label for="username">Username:</label><br />
+  <input type="text" name="username" />
+
+  <br />
+
+  <label for="password">Password:</label><br />
+  <input type="password" name="password" />
+
+  <button>Login</button>
+</form>
+
+<br>
+
 
 <body>
+  {{> header}}
   {{{body}}}
 </body>
 

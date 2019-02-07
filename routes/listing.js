@@ -2,19 +2,18 @@
 
 const express = require('express');
 const router = express.Router();
-const knex = require('../database');
+const Photo = require('../database/models/Photo');
+const User = require('../database/models/User');
 
 const renderData = {
   photoList: null
 };
 
 router.get('/', (req, res) => {
-  knex('photos')
-    .select('id', 'link', 'title', 'author', 'description')
-    .then(photoList => {
-      renderData.photoList = photoList;
-      res.render('listing', renderData);
-    });
+  Photo.fetchAll().then(photoList => {
+    renderData.photoList = photoList.toJSON();
+    res.render('listing', renderData);
+  });
 });
 
 module.exports = router;

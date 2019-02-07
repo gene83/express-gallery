@@ -9,20 +9,22 @@ html {
   margin-top: 100px;
   margin-left: 10%;
   margin-right: 10%; }
-  html header {
+  html body header {
     display: flex;
     flex-flow: row nowrap;
     align-items: flex-start;
     margin-bottom: 75px;
     border-top: 1px dotted #95b8b9; }
-    html header #company-name {
-      color: #205263;
-      font-family: 'Fira Sans', sans-serif;
-      font-size: 80px;
-      width: 70%;
-      letter-spacing: 3px;
-      padding: 25px; }
-    html header .description {
+    html body header a {
+      text-decoration: none; }
+      html body header a #company-name {
+        color: #205263;
+        font-family: 'Fira Sans', sans-serif;
+        font-size: 80px;
+        width: 70%;
+        letter-spacing: 3px;
+        padding: 25px; }
+    html body header .description {
       width: 30%;
       font-size: 22px;
       border-left: 1px solid #95b8b9;

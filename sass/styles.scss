@@ -15,33 +15,36 @@ html {
   margin-left: 10%;
   margin-right: 10%;
 
-  header {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: flex-start;
-    // justify-content: center;
-    margin-bottom: 75px;
-    border-top: 1px dotted $border-color;
-
-    #company-name {
-      color: $font-dark;
-      font-family: 'Fira Sans', sans-serif;
-      font-size: 80px;
-      width: 70%;
-      letter-spacing: 3px;
-      padding: 25px;
-    }
-
-    .description {
-      width: 30%;
-      font-size: 22px;
-      border-left: 1px solid $border-color;
-      padding-left: 25px;
-      margin-top: 30px;
-    }
-  }
-
   body {
+    header {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: flex-start;
+      margin-bottom: 75px;
+      border-top: 1px dotted $border-color;
+
+      a {
+        text-decoration: none;
+
+        #company-name {
+          color: $font-dark;
+          font-family: 'Fira Sans', sans-serif;
+          font-size: 80px;
+          width: 70%;
+          letter-spacing: 3px;
+          padding: 25px;
+        }
+      }
+
+      .description {
+        width: 30%;
+        font-size: 22px;
+        border-left: 1px solid $border-color;
+        padding-left: 25px;
+        margin-top: 30px;
+      }
+    }
+
     #banner {
       width: 100%;
       padding-bottom: 15px;

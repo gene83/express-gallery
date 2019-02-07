@@ -106,7 +106,7 @@ app.post('/register', (req, res) => {
 app.post(
   '/login',
   passport.authenticate('local', {
-    successRedirect: '/secret',
+    successRedirect: '/',
     failureRedirect: '/login'
   })
 );
@@ -123,13 +123,6 @@ function isAuthenticated(req, res, next) {
     res.redirect('/');
   }
 }
-
-app.get('/secret', isAuthenticated, (req, res) => {
-  console.log('req.user: ', req.user);
-  console.log('req.user id', req.user.id);
-  console.log('req.username', req.user.username);
-  res.send('you found the secret!');
-});
 
 app.use('/', listing);
 app.use('/gallery', gallery);
