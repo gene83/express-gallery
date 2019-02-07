@@ -1,7 +1,13 @@
 {{#if user}}
 logged in as: {{user.username}}
+<form action="/logout" method="GET" enctype="application/x-www-form-urlencoded">
+  <input type="submit" value="logout">
+</form>
 <br>
 <br>
+<form action="/gallery/new" method="GET" enctype="application/x-www-form-urlencoded">
+  Add Photo: <input type="submit" value="New">
+</form>
 <br>
 <br>
 {{else}}
@@ -14,8 +20,12 @@ logged in as: {{user.username}}
 
   <label for="password">Password:</label><br />
   <input type="password" name="password" />
-
+  <br>
   <button>Login</button>
+</form>
+<br>
+<form action="/register" method="get">
+  Create account: <input type="submit" value="register">
 </form>
 
 <br>

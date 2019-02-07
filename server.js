@@ -113,19 +113,8 @@ app.post(
 
 app.get('/logout', (req, res) => {
   req.logout();
-  res.sendStatus(200);
+  res.redirect('/');
 });
-
-function isAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    next();
-  } else {
-    res.redirect('/');
-  }
-}
-
-app.use('/', listing);
-app.use('/gallery', gallery);
 
 app.get('/login', (req, res) => {
   res.render('login');
@@ -134,6 +123,9 @@ app.get('/login', (req, res) => {
 app.get('/register', (req, res) => {
   res.render('register');
 });
+
+app.use('/', listing);
+app.use('/gallery', gallery);
 
 app.listen(PORT, () => {
   console.log(`Server is up and running on PORT: ${PORT}`);

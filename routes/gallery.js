@@ -11,8 +11,33 @@ const renderData = {
   user: null
 };
 
-router.post('/', (req, res) => {
+function isAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    next();
+  } else {
+    res.redirect(`/gallery/${req.params.id}`);
+  }
+}
+
+function isUsersPhoto(req, res, next) {
+  let photoId = req.params.id;
+  let userId = parseInt(req.user.id);
+
+  Photo.where('id', photoId)
+    .fetch()
+    .then(photo => {
+      photo = photo.toJSON();
+      if (photo.user_id === userId) {
+        next();
+      } else {
+        res.redirect(`/gallery/${req.params.id}`);
+      }
+    });
+}
+
+router.post('/', isAuthenticated, (req, res) => {
   new Photo({
+    user_id: req.user.id,
     link: req.body.link,
     title: req.body.title,
     author: req.body.author,
@@ -24,7 +49,7 @@ router.post('/', (req, res) => {
     });
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', isUsersPhoto, (req, res) => {
   const id = req.params.id;
 
   Photo.where('id', id)
@@ -43,7 +68,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', isUsersPhoto, (req, res) => {
   const id = req.params.id;
 
   Photo.where('id', id)
@@ -75,7 +100,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', isUsersPhoto, (req, res) => {
   const id = req.params.id;
 
   renderData.user = req.user;
