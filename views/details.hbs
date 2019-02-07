@@ -1,28 +1,31 @@
-{{#with singlePhoto}}
-<div class="detailedPhoto">
-  {{title}} -- {{author}} <br>
-  <img src="{{link}}" alt="A photograph of the sea"> <br>
-  {{description}}
+<div id="detailed-page">
 
-  <form action="/gallery/{{id}}/edit" method="GET" enctype="application/x-www-form-urlencoded">
-    <input type="submit" value="Edit Photo">
-  </form>
+  {{#with singlePhoto}}
+  <div id="detailed-post">
+    <span id="title">{{title}}</span> -- {{author}} <br>
+    <img src="{{link}}" alt="A photograph of the sea" id="detailed-image"> <br>
+    {{description}}
 
-  <form action="/gallery/{{id}}?_method=DELETE" method="POST" enctype="application/x-www-form-urlencoded">
-    <input type="submit" value="Delete Photo">
-  </form>
-</div>
-{{/with}}
+    <form action="/gallery/{{id}}/edit" method="GET" enctype="application/x-www-form-urlencoded">
+      <input type="submit" value="Edit Photo">
+    </form>
 
-<div class="sidebar">
-  {{#each photoList}}
-  <div class="card">
-    <img src="{{link}}" alt="A photograph of the sea"> <br>
-    {{title}} -- <br>
-    {{author}}
-    <form action="/gallery/{{id}}" method="GET" enctype="application/x-www-form-urlencoded">
-      <input type="submit" value="view">
+    <form action="/gallery/{{id}}?_method=DELETE" method="POST" enctype="application/x-www-form-urlencoded">
+      <input type="submit" value="Delete Photo">
     </form>
   </div>
-  {{/each}}
+  {{/with}}
+
+  <div id="sidebar">
+    {{#each photoList}}
+    <div class="card">
+      <img src="{{link}}" alt="A photograph of the sea" class="photo"> <br>
+      <form action="/gallery/{{id}}" method="GET" enctype="application/x-www-form-urlencoded">
+        <input type="submit" value="view">
+      </form>
+      {{title}} -- {{author}}
+    </div>
+    {{/each}}
+  </div>
+
 </div>
