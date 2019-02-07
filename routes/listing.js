@@ -6,10 +6,13 @@ const Photo = require('../database/models/Photo');
 const User = require('../database/models/User');
 
 const renderData = {
-  photoList: null
+  photoList: null,
+  user: null
 };
 
 router.get('/', (req, res) => {
+  renderData.user = req.user;
+
   Photo.fetchAll().then(photoList => {
     renderData.photoList = photoList.toJSON();
     res.render('listing', renderData);

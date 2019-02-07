@@ -7,7 +7,8 @@ const User = require('../database/models/User');
 
 const renderData = {
   photoList: null,
-  singlePhoto: null
+  singlePhoto: null,
+  user: null
 };
 
 router.post('/', (req, res) => {
@@ -53,11 +54,14 @@ router.delete('/:id', (req, res) => {
 });
 
 router.get('/new', (req, res) => {
-  res.render('new');
+  renderData.user = req.user;
+  res.render('new', renderData);
 });
 
 router.get('/:id', (req, res) => {
   const id = req.params.id;
+
+  renderData.user = req.user;
 
   Photo.fetchAll().then(photoList => {
     return (renderData.photoList = photoList.toJSON().slice(0, 3));
@@ -73,6 +77,8 @@ router.get('/:id', (req, res) => {
 
 router.get('/:id/edit', (req, res) => {
   const id = req.params.id;
+
+  renderData.user = req.user;
 
   Photo.where('id', id)
     .fetch()

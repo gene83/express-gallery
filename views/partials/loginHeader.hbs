@@ -1,0 +1,22 @@
+{{#if user}}
+logged in as: {{user.username}}
+<br>
+<br>
+<br>
+<br>
+{{else}}
+
+<form action="/login" method="POST" id="header-login">
+  <label for="username">Username:</label><br />
+  <input type="text" name="username" />
+
+  <br />
+
+  <label for="password">Password:</label><br />
+  <input type="password" name="password" />
+
+  <button>Login</button>
+</form>
+
+<br>
+{{/if}}
