@@ -19,10 +19,9 @@
   <div id="sidebar">
     {{#each photoList}}
     <div class="card">
-      <img src="{{link}}" alt="A photograph of the sea" class="photo"> <br>
-      <form action="/gallery/{{id}}" method="GET" enctype="application/x-www-form-urlencoded">
-        <input type="submit" value="view">
-      </form>
+      <a href="/gallery/{{id}}">
+        <img src="{{link}}" alt="A photograph of the sea" class="photo"> <br>
+      </a>
       {{title}} -- {{author}}
     </div>
     {{/each}}
