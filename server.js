@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
+const bcrypt = require('bcryptjs');
+const redis = require('connect-redis');
 
 const gallery = require('./routes/gallery');
 const listing = require('./routes/listing');
@@ -16,6 +18,7 @@ const Photo = require('./database/models/Photo');
 const PORT = process.env.PORT || 8080;
 const ENV = process.env.NODE_ENV || 'development';
 const SESSION_SECRET = process.env.SESSION_SECRET || 'super tube';
+const saltRounds = 12;
 
 const app = express();
 
@@ -74,10 +77,14 @@ passport.use(
 
         if (user === null) {
           return done(null, false, { message: 'bad username or password' });
-        } else if (password === user.password) {
-          return done(null, user);
         } else {
-          return done(null, false, { message: 'bad username or password' });
+          bcrypt.compare(password, user.password).then(res => {
+            if (res) {
+              return done(null, user);
+            } else {
+              return done(null, false, { message: 'bad username or password' });
+            }
+          });
         }
       })
       .catch(err => {
@@ -88,19 +95,27 @@ passport.use(
 );
 
 app.post('/register', (req, res) => {
-  return new User({
-    username: req.body.username,
-    password: req.body.password
-  })
-    .save()
-    .then(user => {
-      console.log(user);
-      res.redirect('/login');
-    })
-    .catch(err => {
+  bcrypt.genSalt(saltRounds, (err, salt) => {
+    if (err) {
       console.log(err);
-      return res.send('Error Creating account');
+    }
+
+    bcrypt.hash(req.body.password, salt, (err, hash) => {
+      return new User({
+        username: req.body.username,
+        password: hash
+      })
+        .save()
+        .then(user => {
+          console.log(user);
+          res.redirect('/login');
+        })
+        .catch(err => {
+          console.log(err);
+          return res.send('Error Creating account');
+        });
     });
+  });
 });
 
 app.post(

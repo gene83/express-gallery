@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/gene83/express-gallery#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "bookshelf": "^0.14.2",
+    "connect-redis": "^3.4.0",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
