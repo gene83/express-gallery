@@ -8,7 +8,7 @@ const methodOverride = require('method-override');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const bcrypt = require('bcryptjs');
-const redis = require('connect-redis');
+const redis = require('connect-redis')(session);
 
 const gallery = require('./routes/gallery');
 const listing = require('./routes/listing');
@@ -29,6 +29,7 @@ app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 app.use(
   session({
+    store: new redis({ url: 'redis://localhost:6379', logErrors: true }),
     secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
