@@ -133,11 +133,11 @@ app.get('/logout', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-  res.render('login');
+  res.render('login', { loginOrRegisterPage: true });
 });
 
 app.get('/register', (req, res) => {
-  res.render('register');
+  res.render('register', { loginOrRegisterPage: true });
 });
 
 app.use('/', listing);
