@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 app.use(
   session({
-    store: new redis({ url: 'redis://localhost:6379', logErrors: true }),
+    store: new redis({ url: 'redis://redis-server:6379', logErrors: true }),
     secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: false,

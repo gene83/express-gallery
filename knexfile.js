@@ -28,10 +28,11 @@ module.exports = {
   },
 
   production: {
-    client: 'postgresql',
+    client: 'pg',
     connection: {
-      database: 'my_db',
-      user: 'username',
+      host: 'postgres-primary-db',
+      database: 'gallery',
+      user: 'gene83',
       password: 'password'
     },
     pool: {
