@@ -112,7 +112,8 @@ app.post('/register', (req, res) => {
 
   bcrypt.genSalt(saltRounds, (err, salt) => {
     if (err) {
-      console.log(err);
+      res.writeHead(500);
+      return res.send('error creating account');
     }
 
     bcrypt.hash(req.body.password, salt, (err, hash) => {
@@ -126,7 +127,7 @@ app.post('/register', (req, res) => {
           res.redirect('/login');
         })
         .catch(err => {
-          console.log(err);
+          res.writeHead(500);
           return res.send('Error Creating account');
         });
     });

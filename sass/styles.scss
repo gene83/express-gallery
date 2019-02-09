@@ -94,6 +94,15 @@ html {
       display: flex;
       flex-flow: row nowrap;
 
+      .edit-delete-forms {
+        display: flex;
+        float: right;
+
+        .edit-button {
+          margin-right: 10px;
+        }
+      }
+
       .detailed-post {
         width: 70%;
         .title {

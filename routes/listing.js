@@ -14,8 +14,7 @@ router.get('/', (req, res) => {
   renderData.user = req.user;
   Photo.fetchAll().then(photoList => {
     renderData.photoList = photoList.toJSON();
-    renderData.messages = req.flash('success');
-    console.log(req.flash('success'));
+    renderData.message = req.flash('message');
     res.render('listing', renderData);
   });
 });

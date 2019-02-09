@@ -62,6 +62,11 @@ html {
   html body .detailed-page {
     display: flex;
     flex-flow: row nowrap; }
+    html body .detailed-page .edit-delete-forms {
+      display: flex;
+      float: right; }
+      html body .detailed-page .edit-delete-forms .edit-button {
+        margin-right: 10px; }
     html body .detailed-page .detailed-post {
       width: 70%; }
       html body .detailed-page .detailed-post .title {
