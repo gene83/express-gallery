@@ -12,9 +12,10 @@ const renderData = {
 
 router.get('/', (req, res) => {
   renderData.user = req.user;
-
   Photo.fetchAll().then(photoList => {
     renderData.photoList = photoList.toJSON();
+    renderData.messages = req.flash('success');
+    console.log(req.flash('success'));
     res.render('listing', renderData);
   });
 });

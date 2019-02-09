@@ -1,10 +1,12 @@
-<div id="detailed-page">
+<div class="detailed-page">
 
   {{#with singlePhoto}}
-  <div id="detailed-post">
-    <span id="title">{{title}}</span> -- {{author}} <br>
-    <img src="{{link}}" alt="A photograph of the sea" id="detailed-image"> <br>
-    {{description}}
+  <div class="detailed-post">
+    <span class="title">{{title}}</span> -- {{author}} <br>
+    <img src="{{link}}" alt="A photograph of the sea" class="detailed-image"> <br>
+    <div class="description">
+      {{description}}
+    </div>
 
     <form action="/gallery/{{id}}/edit" method="GET" enctype="application/x-www-form-urlencoded">
       <input type="submit" value="Edit Photo">
@@ -16,13 +18,13 @@
   </div>
   {{/with}}
 
-  <div id="sidebar">
+  <div class="sidebar">
     {{#each photoList}}
     <div class="card">
       <a href="/gallery/{{id}}">
         <img src="{{link}}" alt="A photograph of the sea" class="photo"> <br>
+        {{title}} -- {{author}}
       </a>
-      {{title}} -- {{author}}
     </div>
     {{/each}}
   </div>

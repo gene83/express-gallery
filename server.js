@@ -9,6 +9,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const bcrypt = require('bcryptjs');
 const redis = require('connect-redis')(session);
+const flash = require('connect-flash');
 
 const gallery = require('./routes/gallery');
 const listing = require('./routes/listing');
@@ -36,6 +37,7 @@ app.use(
     cookie: { secure: ENV === 'production' }
   })
 );
+app.use(flash());
 app.use(methodOverride('_method'));
 
 app.use(express.static('public'));
@@ -73,17 +75,19 @@ passport.use(
     return new User({ username: username })
       .fetch()
       .then(user => {
-        user = user.toJSON();
         console.log(user);
 
         if (user === null) {
-          return done(null, false, { message: 'bad username or password' });
+          return done(null, false, {
+            message: `user: ${username} doesnt exist`
+          });
         } else {
+          user = user.toJSON();
           bcrypt.compare(password, user.password).then(res => {
             if (res) {
               return done(null, user);
             } else {
-              return done(null, false, { message: 'bad username or password' });
+              return done(null, false, { message: 'incorrect password' });
             }
           });
         }
@@ -96,6 +100,16 @@ passport.use(
 );
 
 app.post('/register', (req, res) => {
+  if (req.body.username === '') {
+    req.flash('message', 'Missing Username');
+    res.redirect('/register');
+  }
+
+  if (req.body.password === '') {
+    req.flash('message', 'Missing Password');
+    res.redirect('/register');
+  }
+
   bcrypt.genSalt(saltRounds, (err, salt) => {
     if (err) {
       console.log(err);
@@ -123,7 +137,8 @@ app.post(
   '/login',
   passport.authenticate('local', {
     successRedirect: '/',
-    failureRedirect: '/login'
+    failureRedirect: '/login',
+    failureFlash: true
   })
 );
 
@@ -133,11 +148,17 @@ app.get('/logout', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-  res.render('login', { loginOrRegisterPage: true });
+  res.render('login', {
+    loginOrRegisterPage: true,
+    message: req.flash('error')
+  });
 });
 
 app.get('/register', (req, res) => {
-  res.render('register', { loginOrRegisterPage: true });
+  res.render('register', {
+    loginOrRegisterPage: true,
+    message: req.flash('message')
+  });
 });
 
 app.use('/', listing);

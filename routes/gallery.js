@@ -23,16 +23,20 @@ function isUsersPhoto(req, res, next) {
   let photoId = req.params.id;
   let userId = parseInt(req.user.id);
 
-  Photo.where('id', photoId)
-    .fetch()
-    .then(photo => {
-      photo = photo.toJSON();
-      if (photo.user_id === userId) {
-        next();
-      } else {
-        res.redirect(`/gallery/${req.params.id}`);
-      }
-    });
+  if (req.isAuthenticated()) {
+    Photo.where('id', photoId)
+      .fetch()
+      .then(photo => {
+        photo = photo.toJSON();
+        if (photo.user_id === userId) {
+          next();
+        } else {
+          res.redirect(`/gallery/${req.params.id}`);
+        }
+      });
+  } else {
+    res.redirect(`/gallery/${req.params.id}`);
+  }
 }
 
 router.post('/', isAuthenticated, (req, res) => {
@@ -45,6 +49,7 @@ router.post('/', isAuthenticated, (req, res) => {
   })
     .save()
     .then(() => {
+      req.flash('success', 'photo posted succesfully');
       res.redirect('/');
     });
 });
@@ -78,7 +83,7 @@ router.delete('/:id', isUsersPhoto, (req, res) => {
     });
 });
 
-router.get('/new', (req, res) => {
+router.get('/new', isAuthenticated, (req, res) => {
   renderData.user = req.user;
   res.render('new', renderData);
 });
