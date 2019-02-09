@@ -140,5 +140,30 @@ html {
         }
       }
     }
+
+    .edit-page {
+      width: 70%;
+      .edit-image {
+        width: 100%;
+      }
+
+      .edit-form {
+        .description {
+          width: 100%;
+          height: 500px;
+        }
+      }
+    }
+
+    .new-page {
+      width: 70%;
+
+      .new-form {
+        .description {
+          width: 100%;
+          height: 500px;
+        }
+      }
+    }
   }
 }

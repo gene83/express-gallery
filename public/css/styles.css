@@ -91,3 +91,15 @@ html {
           html body .detailed-page .sidebar .card a .photo {
             width: 100%;
             height: 220px; }
+  html body .edit-page {
+    width: 70%; }
+    html body .edit-page .edit-image {
+      width: 100%; }
+    html body .edit-page .edit-form .description {
+      width: 100%;
+      height: 500px; }
+  html body .new-page {
+    width: 70%; }
+    html body .new-page .new-form .description {
+      width: 100%;
+      height: 500px; }
