@@ -59,6 +59,12 @@ html {
         html body #main .card a .details {
           margin-top: 5px;
           margin-bottom: 10px; }
+  html body #main .card:nth-child(1) {
+    padding-left: 0px; }
+  html body #main .card:nth-child(3n) {
+    padding-right: 0px; }
+  html body #main .card:nth-child(3n + 4) {
+    padding-left: 0px; }
   html body .detailed-page {
     display: flex;
     flex-flow: row nowrap; }

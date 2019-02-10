@@ -90,6 +90,18 @@ html {
       }
     }
 
+    #main .card:nth-child(1) {
+      padding-left: 0px;
+    }
+
+    #main .card:nth-child(3n) {
+      padding-right: 0px;
+    }
+
+    #main .card:nth-child(3n + 4) {
+      padding-left: 0px;
+    }
+
     .detailed-page {
       display: flex;
       flex-flow: row nowrap;
