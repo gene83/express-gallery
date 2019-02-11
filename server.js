@@ -46,7 +46,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.serializeUser((user, done) => {
-  console.log('serializing');
   return done(null, {
     id: user.id,
     username: user.username
@@ -54,7 +53,6 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((user, done) => {
-  console.log('deserializing');
   new User({ id: user.id })
     .fetch()
     .then(dbUser => {
@@ -65,8 +63,8 @@ passport.deserializeUser((user, done) => {
       });
     })
     .catch(err => {
-      console.log(err);
-      return done(err);
+      res.writeHead(500);
+      return res.send('server error');
     });
 });
 
@@ -75,8 +73,6 @@ passport.use(
     return new User({ username: username })
       .fetch()
       .then(user => {
-        console.log(user);
-
         if (user === null) {
           return done(null, false, {
             message: `user: ${username} doesnt exist`
@@ -93,8 +89,8 @@ passport.use(
         }
       })
       .catch(err => {
-        console.log('error: ', err);
-        return done(err);
+        res.writeHead(500);
+        return res.send('server error');
       });
   })
 );
@@ -123,7 +119,6 @@ app.post('/register', (req, res) => {
       })
         .save()
         .then(user => {
-          console.log(user);
           res.redirect('/login');
         })
         .catch(err => {
