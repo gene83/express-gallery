@@ -14,12 +14,10 @@ const flash = require('connect-flash');
 const gallery = require('./routes/gallery');
 const listing = require('./routes/listing');
 const User = require('./database/models/User');
-const Photo = require('./database/models/Photo');
 
 const PORT = process.env.PORT || 8080;
 const ENV = process.env.NODE_ENV || 'development';
 const SESSION_SECRET = process.env.SESSION_SECRET || 'super tube';
-const saltRounds = 12;
 
 const app = express();
 
@@ -94,68 +92,6 @@ passport.use(
       });
   })
 );
-
-app.post('/register', (req, res) => {
-  if (req.body.username === '') {
-    req.flash('message', 'Missing Username');
-    res.redirect('/register');
-  }
-
-  if (req.body.password === '') {
-    req.flash('message', 'Missing Password');
-    res.redirect('/register');
-  }
-
-  bcrypt.genSalt(saltRounds, (err, salt) => {
-    if (err) {
-      res.writeHead(500);
-      return res.send('error creating account');
-    }
-
-    bcrypt.hash(req.body.password, salt, (err, hash) => {
-      return new User({
-        username: req.body.username,
-        password: hash
-      })
-        .save()
-        .then(user => {
-          res.redirect('/login');
-        })
-        .catch(err => {
-          res.writeHead(500);
-          return res.send('Error Creating account');
-        });
-    });
-  });
-});
-
-app.post(
-  '/login',
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/login',
-    failureFlash: true
-  })
-);
-
-app.get('/logout', (req, res) => {
-  req.logout();
-  res.redirect('/');
-});
-
-app.get('/login', (req, res) => {
-  res.render('login', {
-    loginOrRegisterPage: true,
-    message: req.flash('error')
-  });
-});
-
-app.get('/register', (req, res) => {
-  res.render('register', {
-    loginOrRegisterPage: true,
-    message: req.flash('message')
-  });
-});
 
 app.use('/', listing);
 app.use('/gallery', gallery);
