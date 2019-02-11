@@ -6,106 +6,107 @@
 html {
   font-family: 'Telex', sans-serif;
   color: #398490;
-  margin-top: 75px;
-  margin-left: 10%;
-  margin-right: 10%; }
-  html body .login-header {
-    width: 300px;
-    position: relative;
-    left: 85%;
-    margin-bottom: 25px; }
-    html body .login-header .login-button {
-      position: relative; }
-  html body header {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: flex-start;
-    margin-bottom: 75px;
-    border-top: 1px dotted #95b8b9; }
-    html body header a {
-      text-decoration: none;
-      width: 70%;
-      padding: 25px;
-      padding-left: 0px; }
-      html body header a #company-name {
-        color: #205263;
-        font-family: 'Fira Sans', sans-serif;
-        font-size: 80px; }
-    html body header .description {
-      width: 30%;
-      font-size: 22px;
-      border-left: 1px solid #95b8b9;
-      padding-left: 25px;
-      margin-top: 30px; }
-  html body #banner {
-    width: 100%;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #95b8b9; }
-  html body #main {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    margin-top: 10px; }
-    html body #main .card {
-      width: 33.33%;
-      padding: 20px;
-      border-bottom: 1px solid #95b8b9; }
-      html body #main .card a {
+  margin-top: 75px; }
+  html body {
+    margin-left: 10%;
+    margin-right: 10%; }
+    html body .login-header {
+      width: 300px;
+      position: relative;
+      left: 85%;
+      margin-bottom: 25px; }
+      html body .login-header .login-button {
+        position: relative; }
+    html body header {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: flex-start;
+      margin-bottom: 75px;
+      border-top: 1px dotted #95b8b9; }
+      html body header a {
         text-decoration: none;
-        color: #398490; }
-        html body #main .card a .photo {
-          width: 100%;
-          height: 300px; }
-        html body #main .card a .details {
-          margin-top: 5px;
-          margin-bottom: 10px; }
-  html body #main .card:nth-child(1) {
-    padding-left: 0px; }
-  html body #main .card:nth-child(3n) {
-    padding-right: 0px; }
-  html body #main .card:nth-child(3n + 4) {
-    padding-left: 0px; }
-  html body .detailed-page {
-    display: flex;
-    flex-flow: row nowrap; }
-    html body .detailed-page .edit-delete-forms {
+        width: 70%;
+        padding: 25px;
+        padding-left: 0px; }
+        html body header a #company-name {
+          color: #205263;
+          font-family: 'Fira Sans', sans-serif;
+          font-size: 80px; }
+      html body header .description {
+        width: 30%;
+        font-size: 22px;
+        border-left: 1px solid #95b8b9;
+        padding-left: 25px;
+        margin-top: 30px; }
+    html body #banner {
+      width: 100%;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #95b8b9; }
+    html body #main {
       display: flex;
-      float: right; }
-      html body .detailed-page .edit-delete-forms .edit-button {
-        margin-right: 10px; }
-    html body .detailed-page .detailed-post {
-      width: 70%; }
-      html body .detailed-page .detailed-post .title {
-        color: #205263;
-        font-size: 26px; }
-      html body .detailed-page .detailed-post .detailed-image {
-        width: 100%;
-        margin-top: 15px;
-        margin-bottom: 30px; }
-      html body .detailed-page .detailed-post .description {
-        color: #205263; }
-    html body .detailed-page .sidebar {
-      width: 30%;
-      display: flex;
-      flex-flow: column nowrap;
-      justify-content: space-between; }
-      html body .detailed-page .sidebar .card {
-        margin: 25px; }
-        html body .detailed-page .sidebar .card a {
+      flex-flow: row wrap;
+      justify-content: space-between;
+      margin-top: 10px; }
+      html body #main .card {
+        width: 33.33%;
+        padding: 20px;
+        border-bottom: 1px solid #95b8b9; }
+        html body #main .card a {
           text-decoration: none;
           color: #398490; }
-          html body .detailed-page .sidebar .card a .photo {
+          html body #main .card a .photo {
             width: 100%;
-            height: 220px; }
-  html body .edit-page {
-    width: 70%; }
-    html body .edit-page .edit-image {
-      width: 100%; }
-    html body .edit-page .edit-form .description {
-      width: 100%;
-      height: 500px; }
-  html body .new-page {
-    width: 70%; }
-    html body .new-page .new-form .description {
-      width: 100%;
-      height: 500px; }
+            height: 300px; }
+          html body #main .card a .details {
+            margin-top: 5px;
+            margin-bottom: 10px; }
+    html body #main .card:nth-child(1) {
+      padding-left: 0px; }
+    html body #main .card:nth-child(3n) {
+      padding-right: 0px; }
+    html body #main .card:nth-child(3n + 4) {
+      padding-left: 0px; }
+    html body .detailed-page {
+      display: flex;
+      flex-flow: row nowrap; }
+      html body .detailed-page .edit-delete-forms {
+        display: flex;
+        float: right; }
+        html body .detailed-page .edit-delete-forms .edit-button {
+          margin-right: 10px; }
+      html body .detailed-page .detailed-post {
+        width: 70%; }
+        html body .detailed-page .detailed-post .title {
+          color: #205263;
+          font-size: 26px; }
+        html body .detailed-page .detailed-post .detailed-image {
+          width: 100%;
+          margin-top: 15px;
+          margin-bottom: 30px; }
+        html body .detailed-page .detailed-post .description {
+          color: #205263; }
+      html body .detailed-page .sidebar {
+        width: 30%;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between; }
+        html body .detailed-page .sidebar .card {
+          margin: 25px; }
+          html body .detailed-page .sidebar .card a {
+            text-decoration: none;
+            color: #398490; }
+            html body .detailed-page .sidebar .card a .photo {
+              width: 100%;
+              height: 220px; }
+    html body .edit-page {
+      width: 70%; }
+      html body .edit-page .edit-image {
+        width: 100%; }
+      html body .edit-page .edit-form .description {
+        width: 100%;
+        height: 500px; }
+    html body .new-page {
+      width: 70%; }
+      html body .new-page .new-form .description {
+        width: 100%;
+        height: 500px; }

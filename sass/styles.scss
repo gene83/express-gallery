@@ -12,10 +12,11 @@ html {
   font-family: 'Telex', sans-serif;
   color: $font-light;
   margin-top: 75px;
-  margin-left: 10%;
-  margin-right: 10%;
 
   body {
+    margin-left: 10%;
+    margin-right: 10%;
+
     .login-header {
       width: 300px;
       position: relative;

@@ -33,8 +33,8 @@ app.use(
     store: new redis({ url: 'redis://redis-server:6379', logErrors: true }),
     secret: SESSION_SECRET,
     resave: false,
-    saveUninitialized: false,
-    cookie: { secure: ENV === 'production' }
+    saveUninitialized: false
+    // cookie: { secure: ENV === 'production' }
   })
 );
 app.use(flash());

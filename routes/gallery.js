@@ -55,12 +55,12 @@ router.post('/', isAuthenticated, (req, res) => {
     .save()
     .then(() => {
       req.flash('message', 'photo posted succesfully');
-      res.redirect('/');
+      return res.redirect('/');
     })
     .catch(err => {
       res.writeHead(500);
       req.flash('message', 'could not post photo');
-      res.redirect('/gallery/new');
+      return res.redirect('/gallery/new');
     });
 });
 
@@ -79,12 +79,12 @@ router.put('/:id', isUsersPhoto, (req, res) => {
         })
         .then(() => {
           req.flash('message', 'Photo updated successfully');
-          res.redirect(`/gallery/${id}`);
+          return res.redirect(`/gallery/${id}`);
         })
         .catch(err => {
           res.writeHead(500);
           req.flash('message', 'Photo could not be updated');
-          res.redirect(`/gallery/${id}`);
+          return res.redirect(`/gallery/${id}`);
         });
     });
 });
@@ -96,38 +96,40 @@ router.delete('/:id', isUsersPhoto, (req, res) => {
     .destroy()
     .then(() => {
       req.flash('message', 'Photo deleted succesfully');
-      res.redirect('/');
+      return res.redirect('/');
     })
     .catch(err => {
       res.writeHead(500);
       req.flash('message', 'Photo could not be deleted');
-      res.redirect(`/gallery/${id}`);
+      return res.redirect(`/gallery/${id}`);
     });
 });
 
 router.get('/new', isAuthenticated, (req, res) => {
   renderData.message = req.flash('message');
   renderData.user = req.user;
-  res.render('new', renderData);
+  return res.render('new', renderData);
 });
 
 router.get('/:id', (req, res) => {
   const id = req.params.id;
-  const userId = parseInt(req.user.id);
-
   renderData.message = req.flash('message');
   renderData.user = req.user;
   renderData.ownsPhoto = false;
 
-  Photo.where('id', id)
-    .fetch()
-    .then(photo => {
-      let photoJSON = photo.toJSON();
+  if (req.user) {
+    const userId = parseInt(req.user.id);
 
-      if (photoJSON.user_id === userId) {
-        renderData.ownsPhoto = true;
-      }
-    });
+    Photo.where('id', id)
+      .fetch()
+      .then(photo => {
+        let photoJSON = photo.toJSON();
+
+        if (photoJSON.user_id === userId) {
+          return (renderData.ownsPhoto = true);
+        }
+      });
+  }
 
   Photo.fetchAll()
     .then(photoList => {
@@ -143,11 +145,11 @@ router.get('/:id', (req, res) => {
     .then(singlePhoto => {
       singlePhoto = singlePhoto.toJSON();
       renderData.singlePhoto = singlePhoto;
-      res.render('details', renderData);
+      return res.render('details', renderData);
     })
     .catch(err => {
       res.writeHead(500);
-      res.send('Error fetching photo');
+      return res.send('Error fetching photo');
     });
 });
 
@@ -161,11 +163,11 @@ router.get('/:id/edit', isUsersPhoto, (req, res) => {
     .fetch()
     .then(singlePhoto => {
       renderData.singlePhoto = singlePhoto.toJSON();
-      res.render('edit', renderData);
+      return res.render('edit', renderData);
     })
     .catch(err => {
       res.writeHead(500);
-      res.send('Error fetching photo');
+      return res.send('Error fetching photo');
     });
 });
 
