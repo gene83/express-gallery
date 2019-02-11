@@ -8,8 +8,8 @@ html {
   color: #398490;
   margin-top: 75px; }
   html body {
-    margin-left: 10%;
-    margin-right: 10%; }
+    margin: auto;
+    width: 1500px; }
     html body .login-header {
       width: 300px;
       position: relative;
