@@ -3,7 +3,6 @@
 const express = require('express');
 const router = express.Router();
 const Photo = require('../database/models/Photo');
-const User = require('../database/models/User');
 
 const renderData = {
   photoList: null,
@@ -24,24 +23,25 @@ function isAuthenticated(req, res, next) {
 
 function isUsersPhoto(req, res, next) {
   let photoId = req.params.id;
-  let userId = parseInt(req.user.id);
 
-  if (req.isAuthenticated()) {
-    Photo.where('id', photoId)
-      .fetch()
-      .then(photo => {
-        photo = photo.toJSON();
-        if (photo.user_id === userId) {
-          next();
-        } else {
-          req.flash('message', 'Acess denied: user does not own this photo');
-          res.redirect(`/gallery/${req.params.id}`);
-        }
-      });
-  } else {
+  if (!req.isAuthenticated()) {
     req.flash('message', 'Acess denied: user does not own this photo');
     res.redirect(`/gallery/${req.params.id}`);
   }
+
+  Photo.where('id', photoId)
+    .fetch()
+    .then(photo => {
+      const userId = parseInt(req.user.id);
+
+      photo = photo.toJSON();
+      if (photo.user_id === userId) {
+        next();
+      } else {
+        req.flash('message', 'Acess denied: user does not own this photo');
+        res.redirect(`/gallery/${req.params.id}`);
+      }
+    });
 }
 
 router.post('/', isAuthenticated, (req, res) => {
