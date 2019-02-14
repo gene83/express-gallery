@@ -16,7 +16,7 @@ function isAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     next();
   } else {
-    req.flash('');
+    req.flash('message', 'Access denie: must log in to post photos');
     res.redirect(`/gallery/${req.params.id}`);
   }
 }
@@ -25,7 +25,7 @@ function isUsersPhoto(req, res, next) {
   let photoId = req.params.id;
 
   if (!req.isAuthenticated()) {
-    req.flash('message', 'Acess denied: user does not own this photo');
+    req.flash('message', 'Acess denied: must log on to edit photos');
     res.redirect(`/gallery/${req.params.id}`);
   }
 

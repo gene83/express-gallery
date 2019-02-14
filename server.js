@@ -61,8 +61,7 @@ passport.deserializeUser((user, done) => {
       });
     })
     .catch(err => {
-      res.writeHead(500);
-      return res.send('server error');
+      console.log(err);
     });
 });
 
@@ -87,8 +86,7 @@ passport.use(
         }
       })
       .catch(err => {
-        res.writeHead(500);
-        return res.send('server error');
+        console.log(err);
       });
   })
 );

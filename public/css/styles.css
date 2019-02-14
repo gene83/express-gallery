@@ -7,13 +7,12 @@ body {
   font-family: 'Telex', sans-serif;
   color: #398490;
   font-size: 1em;
-  margin-top: 75px;
-  margin-right: 10%;
-  margin-left: 10%;
-  margin-bottom: 20%; }
+  margin: 10%;
+  margin-top: 1em;
+  min-width: 250px; }
   @media (max-width: 800px) {
     body {
-      font-size: 0.75em; } }
+      font-size: 0.5em; } }
   @media (max-width: 460px) {
     body {
       font-size: 0.5em; } }
@@ -31,7 +30,7 @@ body {
     body header a {
       text-decoration: none;
       width: 70%;
-      padding-top: 2em;
+      padding-top: 1em;
       padding-left: 0em; }
       @media (max-width: 460px) {
         body header a {
@@ -53,44 +52,52 @@ body {
       @media (max-width: 460px) {
         body header .description {
           display: none; } }
+  body .message {
+    border: 0.25em solid #95b8b9;
+    padding: 1em;
+    margin: 1em;
+    margin-bottom: 2em;
+    background: white;
+    width: 30%;
+    text-align: center; }
   body #banner {
     width: 100%;
-    height: 25em;
-    padding-bottom: 15px;
+    height: 30em;
+    padding-bottom: 1em;
     border-bottom: 1px solid #95b8b9; }
   body #main {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+    align-items: stretch;
     margin-top: 10px; }
     body #main .card {
       width: 33.33%;
-      padding: 20px;
+      padding: 1em;
       border-bottom: 1px solid #95b8b9; }
       @media (max-width: 460px) {
         body #main .card {
           width: 100%;
-          padding: 20px;
           border: none; } }
       body #main .card a {
         text-decoration: none;
         color: #398490; }
         body #main .card a .photo {
           width: 100%;
-          height: 12em; }
+          height: 75%; }
           @media (max-width: 460px) {
             body #main .card a .photo {
               height: 17em; } }
         body #main .card a .details {
-          margin-top: 5px;
-          margin-bottom: 10px; }
+          margin-top: 0.3em;
+          margin-bottom: 0.3em; }
   @media (min-width: 460px) {
     body #main .card:nth-child(1) {
-      padding-left: 0px; }
+      padding-left: 0em; }
     body #main .card:nth-child(3n) {
-      padding-right: 0px; }
+      padding-right: 0em; }
     body #main .card:nth-child(3n + 4) {
-      padding-left: 0px; } }
+      padding-left: 0em; } }
   body .detailed-page {
     display: flex;
     flex-flow: row nowrap; }
@@ -106,7 +113,7 @@ body {
           width: 100%; } }
       body .detailed-page .detailed-post .title {
         color: #205263;
-        font-size: 26px; }
+        font-size: 1.5em; }
       body .detailed-page .detailed-post .detailed-image {
         width: 100%;
         margin-top: 15px;
