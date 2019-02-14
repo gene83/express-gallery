@@ -1,0 +1,35 @@
+<div class="login-header">
+
+  {{#if user}}
+  <div class="logged-in-header">
+    logged in as: {{user.username}}
+    <form action="/logout" method="GET" enctype="application/x-www-form-urlencoded">
+      <input type="submit" value="logout">
+    </form>
+    <br>
+    <br>
+    <a href="/gallery/new">Add Photo</a>
+    <br>
+    <br>
+  </div>
+  {{else}}
+
+  <div class="logged-out-header">
+    <form action="/login" method="POST" id="header-login">
+      <label for="username">Username:</label><br />
+      <input type="text" name="username" />
+
+      <br />
+
+      <label for="password">Password:</label><br />
+      <input type="password" name="password" />
+      <br>
+      <button class="login-button">Login</button>
+    </form>
+    <br>
+    <a href="/register" class="register-link">create an account</a>
+
+    <br>
+  </div>
+  {{/if}}
+</div>

@@ -1,0 +1,19 @@
+<div class="edit-page">
+  {{#with singlePhoto}}
+  <h2>Edit Photo: {{title}} </h2>
+  {{title}} -- {{author}} <br>
+  <img class="edit-image" src="{{link}}" alt="A photograph of the sea"> <br>
+  {{description}}
+  <br>
+  <form class="edit-form" action="/gallery/{{id}}?_method=PUT" method="POST"
+    enctype="application/x-www-form-urlencoded">
+    Link: <input type="text" name="link" value={{link}}> <br>
+    Title: <input type="text" name="title" value={{title}}> <br>
+    Author: <input type="text" name="author" value={{author}}> <br>
+    description: <br>
+    <textarea class="description" type="textArea" name="description" value={{description}}></textarea>
+    <br>
+    <input type="submit">
+  </form>
+  {{/with}}
+</div>

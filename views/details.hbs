@@ -1,0 +1,37 @@
+<div class="detailed-page">
+  <div class="detailed-post">
+    {{#if ownsPhoto}}
+    <div class="edit-delete-forms">
+      <form class="edit-button" action="/gallery/{{singlePhoto.id}}/edit" method="GET"
+        enctype="application/x-www-form-urlencoded">
+        <input type="submit" value="Edit Photo">
+      </form>
+
+      <form class="delete-button" action="/gallery/{{singlePhoto.id}}?_method=DELETE" method="POST"
+        enctype="application/x-www-form-urlencoded">
+        <input type="submit" value="Delete Photo">
+      </form>
+    </div>
+    {{/if}}
+
+    {{#with singlePhoto}}
+    <span class="title">{{title}}</span> -- {{author}} <br>
+    <img src="{{link}}" alt="A photograph of the sea" class="detailed-image"> <br>
+    <div class="description">
+      {{description}}
+    </div>
+    {{/with}}
+  </div>
+
+  <div class="sidebar">
+    {{#each photoList}}
+    <div class="card">
+      <a href="/gallery/{{id}}">
+        <img src="{{link}}" alt="A photograph of the sea" class="photo"> <br>
+        {{title}} -- {{author}}
+      </a>
+    </div>
+    {{/each}}
+  </div>
+
+</div>

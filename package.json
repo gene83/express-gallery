@@ -1,0 +1,41 @@
+{
+  "name": "express-gallery",
+  "version": "1.0.0",
+  "description": "Express Gallery ===============",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "./node_modules/nodemon/bin/nodemon.js ./server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gene83/express-gallery.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gene83/express-gallery/issues"
+  },
+  "homepage": "https://github.com/gene83/express-gallery#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "bookshelf": "^0.14.2",
+    "connect-flash": "^0.1.1",
+    "connect-redis": "^3.4.0",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.6",
+    "knex": "^0.13.0",
+    "method-override": "^3.0.0",
+    "nodemon": "^1.18.10",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "pg": "^7.8.0"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-watch": "^5.0.1"
+  }
+}
